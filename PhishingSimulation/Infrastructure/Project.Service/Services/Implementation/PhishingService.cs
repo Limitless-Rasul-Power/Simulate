@@ -70,14 +70,6 @@ namespace Project.Service.Services.Implementation
 
             try
             {
-                var documents = _phishingAttempts.Find(new BsonDocument()).ToList();
-
-                
-                foreach (var item in documents)
-                {
-                    _logger.LogInformation("Email: {Email}, AttId: {AttId}",item.Email, item.AttemptId);
-                }
-
                 var attempt = await _phishingAttempts.Find(x => x.AttemptId == attemptId)
                                                      .FirstOrDefaultAsync();
                 if (attempt == null)
